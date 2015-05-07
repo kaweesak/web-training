@@ -1,0 +1,30 @@
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
+	'id'=>'news-form',
+	'enableAjaxValidation'=>false,
+)); ?>
+
+<p class="help-block">Fields with <span class="required">*</span> are required.</p>
+
+<?php echo $form->errorSummary($model); ?>
+
+	<?php echo $form->textFieldGroup($model,'news_mem_id',array('widgetOptions'=>array('htmlOptions'=>array('maxlength'=>4)))); ?>
+
+	<?php echo $form->textFieldGroup($model,'news_topic',array('widgetOptions'=>array('htmlOptions'=>array('maxlength'=>100)))); ?>
+
+	<?php echo $form->textAreaGroup($model,'news_detail', array('widgetOptions'=>array('htmlOptions'=>array('rows'=>6, 'cols'=>50)))); ?>
+
+	<?php echo $form->datePickerGroup($model,'news_create_date',array('widgetOptions'=>array('options'=>array(),'htmlOptions'=>array()), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>', 'append'=>'Click on Month/Year to select a different Month/Year.')); ?>
+
+	<?php echo $form->datePickerGroup($model,'news_update_date',array('widgetOptions'=>array('options'=>array(),'htmlOptions'=>array()), 'prepend'=>'<i class="glyphicon glyphicon-calendar"></i>', 'append'=>'Click on Month/Year to select a different Month/Year.')); ?>
+
+	<?php echo $form->dropDownListGroup($model,'news_status', array('widgetOptions'=>array('data'=>array("N"=>"N","U"=>"U",), 'htmlOptions'=>array('class'=>'input-large')))); ?>
+
+<div class="form-actions">
+	<?php $this->widget('booster.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'context'=>'primary',
+			'label'=>$model->isNewRecord ? 'Create' : 'Save',
+		)); ?>
+</div>
+
+<?php $this->endWidget(); ?>
